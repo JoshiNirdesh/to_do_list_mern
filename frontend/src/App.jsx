@@ -1,14 +1,21 @@
 import React from 'react'
-import Navbar from './components/Navbar'
-import { Route,Routes } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+
+import Landing from './components/Landing.jsx'
+import Login from './components/Login'
+import Register from './components/Register'
+import About from './components/About'
+import Todolist from './components/todolist'
 
 const App = () => {
   return (
     <div>
-      <Navbar/>
       <Routes>
-        <Route path ="/" element={<h1>List Page</h1>}/>
-        <Route path="/add" element={<h1>Add List Page</h1>}/>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/todolist" element={<Todolist/>} />
       </Routes>
     </div>
   )
