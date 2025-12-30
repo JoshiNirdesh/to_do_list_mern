@@ -1,22 +1,26 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import "./login.css"
+import AuthServices from '../services/AuthServices';
 
 const Login = () => {
 
+    const navigate = useNavigate();
     const [email,setEmail]=useState("");
 
     const[password,setPassword]=useState("");
 
-    const loginHandler = (e)=>{
-        try {
-            e.preventDefault()
-            alert(`Login Data ${email} ${password}`);
-        } catch (error) {
-            console.log(error);
-            
+    const loginHandler = async (e)=>{
+       try {
+        e.preventDefault();
+        const data = {email,password};
+        const res = await AuthServices.loginUser(data);
+        console.log(res.data.message);
+         navigate("/");
+       } catch (error) {
+        console.log(error);
+       }
         }
-    }
   return (
    <div className="form-container">
     <div className="form">

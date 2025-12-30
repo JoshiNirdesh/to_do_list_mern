@@ -13,6 +13,9 @@ connectDb()
 app.use(morgan("dev"));
 app.use(cors());
 
+app.get("/",(req,res)=>{
+    res.send("Home");
+})
 app.use("/api/v1/test",require("./routes/testRoutes"))
 app.use("/api/v1/user",require("./routes/userRoutes.js"))
 
