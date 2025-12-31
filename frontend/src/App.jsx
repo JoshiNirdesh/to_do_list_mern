@@ -6,6 +6,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import About from './components/About'
 import Todolist from './components/todolist'
+import Home from './components/Home.jsx'
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
-        <Route path="/todolist" element={<Todolist/>} />
+        <Route path="/todolist" element={<Todolist />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   )
