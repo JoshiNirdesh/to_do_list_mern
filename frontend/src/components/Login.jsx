@@ -17,6 +17,7 @@ const Login = () => {
             const res = await AuthServices.loginUser(data);
             console.log(res.data.message);
             navigate("/home");
+            localStorage.setItem("to-do", JSON.stringify(res.data));
         } catch (error) {
             console.log(error);
         }
