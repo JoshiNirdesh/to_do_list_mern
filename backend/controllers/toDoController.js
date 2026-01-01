@@ -1,5 +1,9 @@
 const createToDoController = (req, res) => {
-    res.send("Creaete todo list")
+    try {
+        const{title,description,createdBy}
+    } catch (error) {
+        
+    }
 
 }
 module.exports=createToDoController;

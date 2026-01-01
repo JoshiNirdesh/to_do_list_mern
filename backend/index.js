@@ -13,14 +13,15 @@ connectDb()
 app.use(morgan("dev"));
 app.use(cors());
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("Home");
 })
-app.use("/api/v1/test",require("./routes/testRoutes"))
-app.use("/api/v1/user",require("./routes/userRoutes.js"))
+app.use("/api/v1/test", require("./routes/testRoutes"))
+app.use("/api/v1/user", require("./routes/userRoutes.js"))
+app.use("/api/v1/todo", require("./routes/toDoRoutes.js"))
 
 
 const PORT = process.env.PORT;
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Running on Port ${PORT}`)
 });
