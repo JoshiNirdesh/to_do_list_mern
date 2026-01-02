@@ -1,8 +1,9 @@
 const express = require("express");
-const createToDoController = require("../controllers/toDoController");
+const { createToDoController, getTodoController } = require("../controllers/toDoController");
 const AuthMiddleware = require("../middleware/AuthMiddleware");
 
 const router = express.Router();
 
 router.post("/create", AuthMiddleware, createToDoController);
+router.post("/getAll/:userId", AuthMiddleware, getTodoController);
 module.exports = router;

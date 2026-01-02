@@ -1,5 +1,6 @@
 const toDoModel = require("../model/toDoModel");
 
+
 const createToDoController = async (req, res) => {
     try {
         const { title, description, createdBy } = req.body;
@@ -25,4 +26,38 @@ const createToDoController = async (req, res) => {
     }
 
 }
-module.exports = createToDoController;
+const getTodoController = async (req, res) => {
+    try {
+        //get user id
+        const { userId } = req.params;
+        //validate
+        if (!userId) {
+            return res.status(404).send({
+                success: false,
+                message: "No User Found with this id",
+            });
+        }
+        //find task
+        const todos = await toDoModel.find({ createdBy: userId });
+        if (!todos) {
+            return res.status(404).send({
+                success: true,
+                message: "you have no todos ",
+            });
+        }
+        res.status(200).send({
+            success: true,
+            message: "Your Todos",
+            todos,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error In Get Todo list API",
+            error,
+        });
+    }
+};
+
+module.exports = { createToDoController, getTodoController };
