@@ -123,4 +123,4 @@ const updateToDoController = async (req, res) => {
     }
 }
 
-module.exports = { createToDoController, getTodoController, deleteToDoController };
+module.exports = { createToDoController, getTodoController, deleteToDoController, updateToDoController };
