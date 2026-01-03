@@ -1,3 +1,4 @@
+const todoModel = require("../model/toDoModel");
 const toDoModel = require("../model/toDoModel");
 
 
@@ -59,5 +60,34 @@ const getTodoController = async (req, res) => {
         });
     }
 };
+
+const deleteToDoController = async (req, res) => {
+    const { id } = req.params
+    try {
+        if (!id) {
+            res.status(500).send({
+                success: false,
+                message: "Id required"
+            })
+        }
+        const todo = await todoModel.findByIdAndDelete({ _id: id })
+        if (!todo) {
+            res.status(500).send({
+                success: false,
+                message: "TOdo not found"
+            })
+        }
+        res.send(200).send({
+            success: true,
+            message: "Deleted Successfully"
+        })
+    } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Delete todo api error",
+            error: error.message
+        })
+    }
+}
 
 module.exports = { createToDoController, getTodoController };
