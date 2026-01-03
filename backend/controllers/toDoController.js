@@ -11,7 +11,7 @@ const createToDoController = async (req, res) => {
                 message: "Please provide title and description"
             })
         }
-        const toDo = new toDoModel({ title, description, createdBy });
+        const toDo = new toDoModel({ title, description, createdBy: req.userId });
         await toDo.save();
         res.status(201).send({
             success: true,
@@ -65,19 +65,19 @@ const deleteToDoController = async (req, res) => {
     const { id } = req.params
     try {
         if (!id) {
-            res.status(500).send({
+            return res.status(500).send({
                 success: false,
                 message: "Id required"
             })
         }
         const todo = await todoModel.findByIdAndDelete({ _id: id })
         if (!todo) {
-            res.status(500).send({
+            return res.status(500).send({
                 success: false,
                 message: "TOdo not found"
             })
         }
-        res.send(200).send({
+        res.status(200).send({
             success: true,
             message: "Deleted Successfully"
         })
@@ -90,4 +90,4 @@ const deleteToDoController = async (req, res) => {
     }
 }
 
-module.exports = { createToDoController, getTodoController };
+module.exports = { createToDoController, getTodoController, deleteToDoController };
