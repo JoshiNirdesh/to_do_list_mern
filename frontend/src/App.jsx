@@ -7,10 +7,13 @@ import Register from './components/Register'
 import About from './components/About'
 import Todolist from './components/todolist'
 import Home from './components/Home.jsx'
+import { ToastContainer } from "react-toastify";
+
 
 const App = () => {
   return (
     <div>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
@@ -19,6 +22,7 @@ const App = () => {
         <Route path="/todolist" element={<Todolist />} />
         <Route path="/home" element={<Home />} />
       </Routes>
+
     </div>
   )
 }

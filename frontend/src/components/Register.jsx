@@ -44,7 +44,7 @@ const Register = () => {
             Not a user? please
             <Link to="/login">Login</Link>
           </p>
-          <button type='submit' className='login-btn' onClick={registerHandler}>Login</button>
+          <button type='submit' className='login-btn' onClick={registerHandler}>Register</button>
         </div>
       </div>
     </div>
