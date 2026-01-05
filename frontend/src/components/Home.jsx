@@ -11,38 +11,28 @@ const Home = () => {
   const openModalHandler = () => {
     setShowModal(true)
   }
-  useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('to-do'));
-    const id = userData && userData.user.id
-    const getUserTask = async ()=>{
-      try {
-        
-      } catch (error) {
-        
-      }
-    }
-  }, [])
-  return (
-    <div>
-      <Navbar />
-      <div className="container">
-        <div className="add-task">
-          <h1>Your Task</h1>
-          <input type="search" placeholder='search your task' />
-          <button className='btn btn-primary' onClick={openModalHandler}>Create Task <i class="fa-solid fa-plus"></i></button>
-        </div>
+  
+return (
+  <div>
+    <Navbar />
+    <div className="container">
+      <div className="add-task">
+        <h1>Your Task</h1>
+        <input type="search" placeholder='search your task' />
+        <button className='btn btn-primary' onClick={openModalHandler}>Create Task <i class="fa-solid fa-plus"></i></button>
       </div>
-      <h1>{title}and {description}</h1>
-      <PopModal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        title={title}
-        setTitle={setTitle}
-        description={description}
-        setDescription={setDescription}
-      />
     </div>
-  )
+    <h1>{title}and {description}</h1>
+    <PopModal
+      showModal={showModal}
+      setShowModal={setShowModal}
+      title={title}
+      setTitle={setTitle}
+      description={description}
+      setDescription={setDescription}
+    />
+  </div>
+)
 }
 
 export default Home
